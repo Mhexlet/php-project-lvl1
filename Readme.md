@@ -14,3 +14,6 @@ $ make install
 
 ## Run
 brain-even
+
+brain-calc
+run: https://asciinema.org/a/316572

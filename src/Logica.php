@@ -77,3 +77,26 @@ function valueGenerator() //генерация числа и проверка о
     finalBrainGames();
     return 0;
 }
+function gcd()
+{
+    for ($i = 0; $i <= 2; $i++) {
+        $numberOne = rand(1, 30);
+        $numberTwo = rand(1, 30);
+        line("Question: {$numberOne} {$numberTwo}");
+        global $gmp;
+        $gcd = gmp_gcd("{$numberOne}", "{$numberTwo}");
+        $gmp = gmp_strval($gcd);
+        line($gmp);
+        global $answer;
+        $answer = prompt('Your answer');
+        if ($answer == $gmp) {
+            line('Correct!');
+        }
+        else {
+            wrongAnswerCalc();
+            return 0;
+        }
+    }
+    finalBrainGames();
+    return 0;
+}
