@@ -17,3 +17,6 @@ brain-even
 
 brain-calc
 run: https://asciinema.org/a/316572
+
+brain-gcd
+run: https://asciinema.org/a/316594
