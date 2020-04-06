@@ -12,7 +12,7 @@ jobs:
     steps:
 
     - name: run-script phpcs -- --standard=PSR12
-      run: make lint
+      run: Run make lint
 
     # - name: Run test suite
     #   run: composer run-script test
