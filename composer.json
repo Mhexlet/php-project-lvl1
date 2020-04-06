@@ -19,7 +19,8 @@
         "bin/games/brain-even",
 	    "bin/games/brain-calc",
         "bin/games/brain-gcd",
-        "bin/games/brain-progression"
+        "bin/games/brain-progression",
+        "bin/games/brain-prime"
     ],
     "autoload": {
         "files": [

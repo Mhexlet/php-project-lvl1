@@ -20,3 +20,11 @@ run: https://asciinema.org/a/316572
 
 brain-gcd
 run: https://asciinema.org/a/316594
+
+brain-progression
+run: https://asciinema.org/a/316799
+
+brain-prime
+run: https://asciinema.org/a/317066
+
+
