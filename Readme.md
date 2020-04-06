@@ -8,7 +8,7 @@
 
 https://asciinema.org/a/315635
 
-$ composer global require makarovhexlet/brain-even:v0.2
+$ composer global require makarovhexlet/brain-even:v0.5
 
 $ make install
 
