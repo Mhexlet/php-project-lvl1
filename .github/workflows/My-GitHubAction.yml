@@ -9,8 +9,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - with:
-          php-version: '7.4
 
       - name: Run linter
         run: make lint
