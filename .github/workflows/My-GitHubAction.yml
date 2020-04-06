@@ -11,5 +11,6 @@ jobs:
     steps:
 
       - name: Run linter
-        run: make lint
+        run: |
+          make lint
 
