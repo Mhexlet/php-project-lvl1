@@ -100,7 +100,7 @@ function gcd() //Функция по наименьшему общему дел�
     finalBrainGames();
     return 0;
 }
-function progression()
+function progression()  //Функция генерирующая прогрессию + проверяет ответ пользователя
 {
     global $progression;
     $progression = array();
@@ -132,7 +132,7 @@ function progression()
     finalBrainGames();
     return 0;
 }
-function primeCheck($number)
+function primeCheck($number) //Проверка числа на простоту
 {
     if ($number == 1)
         return o;
@@ -142,7 +142,7 @@ function primeCheck($number)
     }
     return 'yes';
 }
-function prime()    //Простое ли число
+function prime()    //Генерирует простое число и проверяет ответ пользователя
 {
     for ($i = 0; $i < 3; $i++) {
         $number = rand(2, 1000);
