@@ -1,8 +1,7 @@
 name: My-GitHubActions
 
 on:
-  push:
-    branches: [ master ]
+  - push
 
 jobs:
   build:
@@ -10,9 +9,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v2
 
-    - name: run-script phpcs -- --standard=PSR12
-      run: Run make lint
+      - name: Run lint
+        run: make lint
 
-    # - name: Run test suite
-    #   run: composer run-script test
