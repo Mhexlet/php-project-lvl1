@@ -11,8 +11,7 @@ function checkEven($value) //проверка на четность
 {
     if ($value % 2 === 0) {
         return 'yes';
-    }
-    else {
+    } else {
         return 'no';
     }
 }
@@ -42,8 +41,7 @@ function checkRightAnswer() //генерация числа и проверка 
         $answer = prompt('Your answer');
         if ($answer == $result) {
             line('Correct!');
-        }
-        else {
+        } else {
             wrongAnswerCalc();
             return 0;
         }
@@ -62,17 +60,14 @@ function valueGenerator() //генерация числа и проверка о
         if (checkAnswer($answer)) {
             if (checkEven($number) === $answer) {
                 line('Correct!');
-            } 
-            else {
+            } else {
                 wrongAnswer();
                 return 0;
             }
-        }
-        else {
+        } else {
             wrongAnswer();
             return 0;
         }
-      
     }
     finalBrainGames();
     return 0;
@@ -91,8 +86,7 @@ function gcd() //Функция по наименьшему общему дел�
         $answer = prompt('Your answer');
         if ($answer == $gmp) {
             line('Correct!');
-        }
-        else {
+        } else {
             wrongAnswerCalc();
             return 0;
         }
@@ -123,8 +117,7 @@ function progression()  //Функция генерирующая прогрес
         $answer = prompt('Your answer');
         if ($answer == $result) {
             line('Correct!');
-        }
-        else {
+        } else {
             wrongAnswerCalc();
             return 0;
         }
@@ -134,11 +127,13 @@ function progression()  //Функция генерирующая прогрес
 }
 function primeCheck($number) //Проверка числа на простоту
 {
-    if ($number == 1)
+    if ($number == 1) {
         return o;
+    }
     for ($i = 2; $i < $number / 2; $i++) {
-        if ($number % $i == 0)
-        return 'no';
+        if ($number % $i == 0) {
+            return 'no';
+        }
     }
     return 'yes';
 }
@@ -158,11 +153,10 @@ function prime()    //Генерирует простое число и пров
         }
         if ($answer === $result) {
             line('Correct!');
-        }
-        else {
+        } else {
             wrongAnswerCalc();
             return 0;
         }
     }
     finalBrainGames();
-} 
+}
