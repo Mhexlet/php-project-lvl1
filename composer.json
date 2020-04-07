@@ -33,6 +33,8 @@
         "composer/composer": "^1.10"
     },
     "scripts": {
-        "phpcs": "phpcs"
+        "phpcs": "phpcs",
+        "phpunit": "phpunit",
+        "test": "phpunit tests"
     }
 }
