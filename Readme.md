@@ -15,18 +15,23 @@ $ sudo apt install php-gmp
 
 ## Run
 brain-even
-run: https://asciinema.org/a/317071
+Successful completion: https://asciinema.org/a/317412
+Unsuccessful completion: https://asciinema.org/a/317413
 
 brain-calc
-run: https://asciinema.org/a/316572
+Successful completion: https://asciinema.org/a/317414
+Unsuccessful completion: https://asciinema.org/a/317415
 
 brain-gcd
-run: https://asciinema.org/a/316594
+Successful completion: https://asciinema.org/a/317417
+Unsuccessful completion: https://asciinema.org/a/317422
 
 brain-progression
-run: https://asciinema.org/a/316799
+Successful completion: https://asciinema.org/a/317423
+Unsuccessful completion: https://asciinema.org/a/317424
 
 brain-prime
-run: https://asciinema.org/a/317066
+Successful completion: https://asciinema.org/a/317426
+Unsuccessful completion: https://asciinema.org/a/317429
 
 

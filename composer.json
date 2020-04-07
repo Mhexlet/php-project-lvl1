@@ -25,7 +25,11 @@
     "autoload": {
         "files": [
             "src/Cli.php",
-            "src/Logica.php"
+            "src/Logica-brain-even.php",
+            "src/Logica-brain-calc.php",
+            "src/Logica-brain-gcd.php",
+            "src/Logica-brain-progression.php",
+            "src/Logica-brain-prime.php"
         ]
     },
     "require-dev": {

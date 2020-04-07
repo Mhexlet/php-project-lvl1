@@ -1,1 +1,6 @@
 /vendor/
+.DS_Store
+logs
+*.swo
+*.swp
+*.cache
