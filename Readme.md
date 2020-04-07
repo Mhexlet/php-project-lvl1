@@ -5,7 +5,7 @@
 
 ## Setup
 
-https://asciinema.org/a/317070
+https://asciinema.org/a/317432
 
 $ composer global require makarovhexlet/brain-even:v0.6
 
