@@ -6,7 +6,7 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
 
     steps:
         # Check-out repository under GitHub workspace
@@ -20,7 +20,8 @@ jobs:
         with:
           # Specify the PHP version
           php-version: '7.4'
-
+      - name: Run install
+        run: make install
       - name: Run linter
         run: make lint
 
