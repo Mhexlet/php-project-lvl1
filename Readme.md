@@ -7,9 +7,11 @@
 
 https://asciinema.org/a/317070
 
-$ composer global require makarovhexlet/brain-even:v0.5
+$ composer global require makarovhexlet/brain-even:v0.6
 
 $ make install
+
+$ sudo apt install php-gmp
 
 ## Run
 brain-even
