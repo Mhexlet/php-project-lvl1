@@ -10,8 +10,6 @@
     ],
     "require": {
         "tightenco/collect": "^5.6",
-        "nesbot/carbon": "^2.32.2",
-        "danielstjules/stringy": "^3.1",
         "wp-cli/php-cli-tools": "^0.11.11",
         "symfony/polyfill-php73": "^1.15"
     },
@@ -25,6 +23,7 @@
     "autoload": {
         "files": [
             "src/Cli.php",
+            "src/Engine.php",
             "src/Logica-brain-even.php",
             "src/Logica-brain-calc.php",
             "src/Logica-brain-gcd.php",

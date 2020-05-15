@@ -2,6 +2,11 @@
 
 use function cli\line;
 use function cli\prompt;
+use function BrainGames\Engine\getAnswer;
+use function BrainGames\Engine\responseToUser;
+use function BrainGames\Engine\wrongAnswer;
+use function BrainGames\Engine\finalBrainGames;
+use function BrainGames\Engine\question;
 
 function checkEven($value) //проверка на четность
 {
@@ -22,11 +27,11 @@ function valueGenerator() //генерация числа и проверка о
 {
     for ($i = 0; $i <= 2; $i++) {
         $number = rand(1, 15);
-        line("Question: {$number}");
-        $answer = prompt('Your answer');
+        question($number);
+        $answer = getAnswer();
         if (checkAnswer($answer)) {
             if (checkEven($number) === $answer) {
-                line('Correct!');
+                responseToUser();
             } else {
                 wrongAnswer();
                 return 0;

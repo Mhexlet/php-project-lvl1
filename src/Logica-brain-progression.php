@@ -2,6 +2,12 @@
 
 use function cli\line;
 use function cli\prompt;
+use function BrainGames\Engine\getAnswer;
+use function BrainGames\Engine\responseToUser;
+use function BrainGames\Engine\wrongAnswer;
+use function BrainGames\Engine\finalBrainGames;
+use function BrainGames\Engine\question;
+use function BrainGames\Engine\wrongAnswerCalc;
 
 function progression()  //Функция генерирующая прогрессию + проверяет ответ пользователя
 {
@@ -13,19 +19,18 @@ function progression()  //Функция генерирующая прогрес
         $progression[$i + 1] = $progression[$i] + 5;
         $i++;
     }
-    //print_r($progression);
     for ($i = 0; $i < 3; $i++) {
         $index = rand(0, 9);
         global $result;
         $result = $progression[$index];
         $progression[$index] = '..';
         $progressionImplode = implode("  ", $progression);
-        line("Question: {$progressionImplode}");
+        question($progressionImplode);
         $progression[$index] = $result;
         global $answer;
-        $answer = prompt('Your answer');
+        $answer = getAnswer();
         if ($answer == $result) {
-            line('Correct!');
+            responseToUser();
         } else {
             wrongAnswerCalc();
             return 0;

@@ -2,6 +2,12 @@
 
 use function cli\line;
 use function cli\prompt;
+use function BrainGames\Engine\getAnswer;
+use function BrainGames\Engine\responseToUser;
+use function BrainGames\Engine\wrongAnswer;
+use function BrainGames\Engine\finalBrainGames;
+use function BrainGames\Engine\question;
+use function BrainGames\Engine\wrongAnswerCalc;
 
 function primeCheck($number) //Проверка числа на простоту
 {
@@ -19,18 +25,17 @@ function prime()    //Генерирует простое число и пров
 {
     for ($i = 0; $i < 3; $i++) {
         $number = rand(2, 1000);
-        line("Question: {$number}");
+        question($number);
         global $result;
         $result = primeCheck($number);
-        //line($result);
         global $answer;
-        $answer = prompt('Your answer');
+        $answer = getAnswer();
         if ($answer !== 'yes' && $answer !== 'no') {
             wrongAnswerCalc();
             return 0;
         }
         if ($answer === $result) {
-            line('Correct!');
+            responseToUser();
         } else {
             wrongAnswerCalc();
             return 0;

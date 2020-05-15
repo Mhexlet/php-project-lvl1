@@ -2,6 +2,12 @@
 
 use function cli\line;
 use function cli\prompt;
+use function BrainGames\Engine\getAnswer;
+use function BrainGames\Engine\responseToUser;
+use function BrainGames\Engine\wrongAnswer;
+use function BrainGames\Engine\finalBrainGames;
+use function BrainGames\Engine\question;
+use function BrainGames\Engine\wrongAnswerCalc;
 
 function checkRightAnswer() //генерация числа и проверка ответа
 {
@@ -11,15 +17,14 @@ function checkRightAnswer() //генерация числа и проверка 
         $mathOperation = array('+', '-', '*');
         $math = rand(0, 2);
         $number = $numberOne . $mathOperation[$math] . $numberTwo;
-        line("Question: {$numberOne} {$mathOperation[$math]} {$numberTwo}");
-        //line($number);
+        $question = "{$numberOne} {$mathOperation[$math]} {$numberTwo}";
+        question($question);
         global $result;
         $result = eval("return ${number};");
-        //line($result);
         global $answer;
-        $answer = prompt('Your answer');
+        $answer = getAnswer();
         if ($answer == $result) {
-            line('Correct!');
+            responseToUser();
         } else {
             wrongAnswerCalc();
             return 0;

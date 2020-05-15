@@ -1,7 +1,7 @@
 #!/usr/bin/env php
 <?php
 
-//namespace BrainGames\Cli;
+use function BrainGames\Engine\run;
 
 $autoloadPath1 = __DIR__ . '/../../../autoload.php';
 $autoloadPath2 = __DIR__ . '/../../vendor/autoload.php';
@@ -13,7 +13,6 @@ if (file_exists($autoloadPath1)) {
 } else {
     require_once $autoloadPath3;
 }
-$terms = 'Answer "yes" if the number is even, otherwise answer "no".';
 
-run($terms);
+run(BrainGames\Cli\TERMSEVEN);
 valueGenerator();
