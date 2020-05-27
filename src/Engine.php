@@ -7,52 +7,39 @@ namespace BrainGames\Engine;
 use function cli\line;
 use function cli\prompt;
 
+const QUANTROUND = 3;
+
 function run($terms) //функция запуска и приветствия
 {
     line('Welcome to the Brain Games!');
     line("{$terms}");
-    global $name;
     $name = prompt('May I have your name?');
     line("Hello, %s!", $name);
     line('');
+    return $name;
 }
 
-function wrongAnswer() //функция выводит сообщения при неверном ответе
+function interaction(array $resultRound, $name) //функция получения ответа пользователя и сравнение с правильным
 {
-    global $name;
-    line("'yes' is wrong answer ;(. Correct answer was 'no'.");
-    line("Let's try again, %s!", $name);
-}
-
-function finalBrainGames() //функция успешного окончания игры
-{
-    global $name;
-    line("Congratulations, %s!", $name);
-}
-
-function getAnswer() //функция получения ответа пользователя
-{
-    //global $answer;
-    $answer = prompt('Your answer');
-    return $answer;
-}
-
-function wrongAnswerCalc() //функция выводит сообщения при неверном ответе
-{
-    global $name;
-    global $answer;
-    global $result;
-    line("'{$answer}' is wrong answer ;(. Correct answer was '{$result}'.");
-    line("Let's try again, %s!", $name);
-}
-
-function responseToUser()
-{
-    line('Correct!');
-}
-
-function question($number)
-{
-    //global $number;
+    $number = $resultRound[0];
+    $correctAnswer = $resultRound[1];
     line("Question: {$number}");
+    $answer = prompt('Your answer');
+    if ($answer == $correctAnswer) {
+        line('Correct!');
+    } else {
+        line("'{$answer}' is wrong answer ;(. Correct answer was '{$correctAnswer}'.");
+        line("Let's try again, %s!", $name);
+        exit;
+    }
+}
+
+function games($terms, $result, $name, $QUANTROUND) //собственно игра
+{
+    for ($i = 0; $i < $QUANTROUND; $i++) {
+        $countArray = count($result);
+        $resultRound = $result[$i];
+        interaction($resultRound, $name);
+    }
+    line("Congratulations, %s!", $name);
 }

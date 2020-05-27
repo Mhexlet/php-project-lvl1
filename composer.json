@@ -22,13 +22,12 @@
     ],
     "autoload": {
         "files": [
-            "src/Cli.php",
             "src/Engine.php",
-            "src/Logica-brain-even.php",
-            "src/Logica-brain-calc.php",
-            "src/Logica-brain-gcd.php",
-            "src/Logica-brain-progression.php",
-            "src/Logica-brain-prime.php"
+            "src/games/Logica-brain-even.php",
+            "src/games/Logica-brain-calc.php",
+            "src/games/Logica-brain-gcd.php",
+            "src/games/Logica-brain-progression.php",
+            "src/games/Logica-brain-prime.php"
         ]
     },
     "require-dev": {
