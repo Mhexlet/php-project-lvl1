@@ -1,13 +1,16 @@
 <?php
 
+namespace BrainGames\BrainPrime;
+
 use function cli\line;
 use function cli\prompt;
-use function BrainGames\Engine\run;
-use function BrainGames\Engine\games;
+use function BrainGames\Engine\play;
+
+use const BrainGames\Engine\QUANTROUND;
 
 function primeCheck($number) //Проверка числа на простоту
 {
-    if ($number == 1) {
+    if ($number <= 1) {
         return false;
     }
     for ($i = 2; $i < $number / 2; $i++) {
@@ -18,9 +21,9 @@ function primeCheck($number) //Проверка числа на простоту
     return true;
 }
 
-function prime()
+function numberGeneratorAndPrimeCheck() //генерация числа и проверка на простоту
 {
-    for ($i = 0; $i < (BrainGames\Engine\QUANTROUND); $i++) {
+    for ($i = 0; $i < QUANTROUND; $i++) {
         $number = rand(2, 1000);
         primeCheck($number) ? $correctAnswer = 'yes' : $correctAnswer = 'no';
         $result[] = [$number, $correctAnswer];
@@ -28,10 +31,9 @@ function prime()
     return $result;
 }
 
-function runGamesPrime()
+function runGames()
 {
     $termsEven = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-    $result = prime();
-    $name = run($termsEven);
-    games($termsEven, $result, $name, BrainGames\Engine\QUANTROUND);
+    $result = numberGeneratorAndPrimeCheck();
+    play($termsEven, $result, QUANTROUND);
 }

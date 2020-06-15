@@ -1,0 +1,9 @@
+#!/usr/bin/env php
+<?php
+
+use function BrainGames\BrainGCD\runGames;
+
+$autoloadPath = __DIR__ . '/../vendor/autoload.php';
+require_once $autoloadPath;
+
+runGames();

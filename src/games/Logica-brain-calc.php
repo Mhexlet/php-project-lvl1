@@ -1,13 +1,16 @@
 <?php
 
+namespace BrainGames\BrainCalc;
+
 use function cli\line;
 use function cli\prompt;
-use function BrainGames\Engine\run;
-use function BrainGames\Engine\games;
+use function BrainGames\Engine\play;
+
+use const BrainGames\Engine\QUANTROUND;
 
 function checkRightAnswer()
 {
-    for ($i = 0; $i < (BrainGames\Engine\QUANTROUND); $i++) {
+    for ($i = 0; $i < QUANTROUND; $i++) {
         //генерируем данные и вопрос пользователю
         $numberOne = rand(1, 5);
         $numberTwo = rand(1, 5);
@@ -22,10 +25,9 @@ function checkRightAnswer()
     return $result;
 }
 
-function runGamesCalc()
+function runGames()
 {
     $termsEven = 'What is the result of the expression?';
     $result = checkRightAnswer();
-    $name = run($termsEven);
-    games($termsEven, $result, $name, BrainGames\Engine\QUANTROUND);
+    play($termsEven, $result, QUANTROUND);
 }

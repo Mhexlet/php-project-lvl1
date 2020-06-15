@@ -1,17 +1,22 @@
 <?php
 
+namespace BrainGames\BrainProgression;
+
 use function cli\line;
 use function cli\prompt;
-use function BrainGames\Engine\run;
-use function BrainGames\Engine\games;
+use function BrainGames\Engine\play;
+
+use const BrainGames\Engine\QUANTROUND;
 
 function getProgression() //генерирует прогрессию
 {
-    $progression = array();
-    $progression[0] = 5;
+    $progression = array(); //объявление переменной с прогрессией
+    $progressionCount = 10; //размер прогрессии
+    $stepProgression = rand(2, 5); //шаг прогрессии (от 2 до 5)
+    $progression[0] = $stepProgression;
     $i = 0;
-    while ($i < 9) {
-        $progression[$i + 1] = $progression[$i] + 5;
+    while ($i < ($progressionCount - 1)) {  //наполнение прогрессии
+        $progression[$i + 1] = $progression[$i] + $stepProgression;
         $i++;
     }
     return $progression;
@@ -19,22 +24,21 @@ function getProgression() //генерирует прогрессию
 
 function randProgression() //Рандомный выбор значения и передача правильного ответа
 {
-    $progression = getProgression();
-    for ($i = 0; $i < (BrainGames\Engine\QUANTROUND); $i++) {
-        $index = rand(0, (count($progression) - 1));
+    for ($i = 0; $i < QUANTROUND; $i++) {
+        $progression = getProgression(); //запись прогрессии в переменную
+        $index = rand(0, (count($progression) - 1)); //рандомный выбор индекса для скрытия
         $correctAnswer = $progression[$index];
         $progression[$index] = '..';
-        $progressionImplode = implode("  ", $progression);
+        $progressionImplode = implode("  ", $progression); //сбор прогрессии в строку
         $progression[$index] = $correctAnswer;
         $result[] = [$progressionImplode, $correctAnswer];
     }
     return $result;
 }
 
-function runGamesProgression()
+function runGames()
 {
     $termsEven = 'What number is missing in the progression?';
     $result = randProgression();
-    $name = run($termsEven);
-    games($termsEven, $result, $name, BrainGames\Engine\QUANTROUND);
+    play($termsEven, $result, QUANTROUND);
 }

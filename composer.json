@@ -14,11 +14,11 @@
         "symfony/polyfill-php73": "^1.15"
     },
     "bin": [
-        "bin/games/brain-even",
-	    "bin/games/brain-calc",
-        "bin/games/brain-gcd",
-        "bin/games/brain-progression",
-        "bin/games/brain-prime"
+        "bin/brain-even",
+	    "bin/brain-calc",
+        "bin/brain-gcd",
+        "bin/brain-progression",
+        "bin/brain-prime"
     ],
     "autoload": {
         "files": [
