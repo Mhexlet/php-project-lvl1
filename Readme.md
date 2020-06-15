@@ -11,8 +11,6 @@ $ composer global require makarovhexlet/brain-even
 
 $ make install
 
-$ sudo apt install php-gmp
-
 ## Run
 brain-even
 Successful completion: https://asciinema.org/a/317412
