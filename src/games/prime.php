@@ -6,7 +6,7 @@ use function cli\line;
 use function cli\prompt;
 use function BrainGames\Engine\play;
 
-use const BrainGames\Engine\QUANTROUND;
+use const BrainGames\Engine\ROUND_COUNT;
 
 function primeCheck($number) //Проверка числа на простоту
 {
@@ -23,7 +23,7 @@ function primeCheck($number) //Проверка числа на простоту
 
 function numberGeneratorAndPrimeCheck() //генерация числа и проверка на простоту
 {
-    for ($i = 0; $i < QUANTROUND; $i++) {
+    for ($i = 0; $i < ROUND_COUNT; $i++) {
         $number = rand(2, 1000);
         primeCheck($number) ? $correctAnswer = 'yes' : $correctAnswer = 'no';
         $result[] = [$number, $correctAnswer];
@@ -33,7 +33,7 @@ function numberGeneratorAndPrimeCheck() //генерация числа и пр�
 
 function runGames()
 {
-    $termsEven = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+    $gameGreeting = 'Answer "yes" if given number is prime. Otherwise answer "no".';
     $result = numberGeneratorAndPrimeCheck();
-    play($termsEven, $result, QUANTROUND);
+    play($gameGreeting, $result, ROUND_COUNT);
 }

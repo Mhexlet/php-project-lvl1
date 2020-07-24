@@ -6,9 +6,9 @@ use function cli\line;
 use function cli\prompt;
 use function BrainGames\Engine\play;
 
-use const BrainGames\Engine\QUANTROUND;
+use const BrainGames\Engine\ROUND_COUNT;
 
-function gcdFind($numberOne, $numberTwo)  //нахождение наибольшего общего делителя
+function findGcd($numberOne, $numberTwo)  //нахождение наибольшего общего делителя
 {
     $minNumber = min($numberOne, $numberTwo);
     $minNumberHalf = round($minNumber / 2, 0, PHP_ROUND_HALF_UP); //определяем половину минимального числа
@@ -26,11 +26,11 @@ function gcdFind($numberOne, $numberTwo)  //нахождение наиболь�
 
 function gcdGenerator() //Функция по наибольшему общему делителю
 {
-    for ($i = 0; $i < QUANTROUND; $i++) {
+    for ($i = 0; $i < ROUND_COUNT; $i++) {
         $numberOne = rand(1, 30);
         $numberTwo = rand(1, 30);
         $question = "{$numberOne} {$numberTwo}";
-        $correctAnswer = gcdFind($numberOne, $numberTwo);
+        $correctAnswer = findGcd($numberOne, $numberTwo);
         $result[] = [$question, $correctAnswer];
     }
     return $result;
@@ -38,7 +38,7 @@ function gcdGenerator() //Функция по наибольшему общем�
 
 function runGames()
 {
-    $termsEven = 'Find the greatest common divisor of given numbers.';
+    $gameGreeting = 'Find the greatest common divisor of given numbers.';
     $result = gcdGenerator();
-    play($termsEven, $result, QUANTROUND);
+    play($gameGreeting, $result, ROUND_COUNT);
 }

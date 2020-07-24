@@ -7,7 +7,7 @@ namespace BrainGames\Engine;
 use function cli\line;
 use function cli\prompt;
 
-const QUANTROUND = 3;  //количество раундов игры
+const ROUND_COUNT = 3;  //количество раундов игры
 
 function askNameUser()
 {
@@ -15,7 +15,7 @@ function askNameUser()
     return $name;
 }
 
-function compareAnswer(array $resultRound, $name) //функция получения ответа пользователя и сравнение с правильным
+function getAndCompareAnswer(array $resultRound, $name) //функция получения ответа пользователя и сравнение с правильным
 {
     [$questionNumber, $correctAnswer] = $resultRound; //извлечение из массива вопроса пользователю и правильного ответа
     line("Question: {$questionNumber}");
@@ -29,19 +29,19 @@ function compareAnswer(array $resultRound, $name) //функция получе�
     }
 }
 
-function play($termsEven, $result, $QUANTROUND) //собственно игра
+function play($gameGreeting, $result, $ROUND_COUNT) //собственно игра
 {
     //Начало приветствия пользователя
     line('Welcome to the Brain Games!');
-    line("{$termsEven}");
+    line("{$gameGreeting}");
     line('');
     $name = askNameUser();
     line("Hello, %s!", $name);
     //Конец приветствия
-    for ($i = 0; $i < $QUANTROUND; $i++) {
+    for ($i = 0; $i < $ROUND_COUNT; $i++) {
         $countArray = count($result);
         $resultRound = $result[$i];
-        compareAnswer($resultRound, $name);
+        getAndCompareAnswer($resultRound, $name);
     }
     line("Congratulations, %s!", $name);
 }
