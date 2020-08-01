@@ -6,15 +6,14 @@ use function cli\line;
 use function cli\prompt;
 use function BrainGames\Engine\play;
 
-use const BrainGames\Engine\ROUND_COUNT;
+use const BrainGames\Engine\ROUNDS_COUNT;
 
-function getProgression($progressionCount, $stepProgression) //генерирует прогрессию
+function getProgression($progressionSize, $stepProgression, $startValueProgression) //генерирует прогрессию
 {
     $progression = array(); //объявление переменной с прогрессией
-    $progression[0] = $stepProgression;
     $i = 0;
-    while ($i < ($progressionCount - 1)) {  //наполнение прогрессии
-        $progression[$i + 1] = $progression[$i] + $stepProgression;
+    while ($i < ($progressionSize - 1)) {
+        $progression[$i] = $startValueProgression + $stepProgression * $i;
         $i++;
     }
     return $progression;
@@ -22,24 +21,25 @@ function getProgression($progressionCount, $stepProgression) //генериру�
 
 function randProgression() //Рандомный выбор значения и передача правильного ответа
 {
-    for ($i = 0; $i < ROUND_COUNT; $i++) {
+    for ($i = 0; $i < ROUNDS_COUNT; $i++) {
         //Задаем параметры прогрессии
-        $progressionCount = 10; //размер прогрессии
+        $progressionSize = 10; //размер прогрессии
         $stepProgression = rand(2, 5); //шаг прогрессии (от 2 до 5)
+        $startValueProgression = 0; //начальное значение прогрессии
         //
-        $progression = getProgression($progressionCount, $stepProgression); //запись прогрессии в переменную
+        $progression = getProgression($progressionSize, $stepProgression, $startValueProgression); //запись прогрессии в переменную
         $index = rand(0, (count($progression) - 1)); //рандомный выбор индекса для скрытия
         $progression[$index] = '..';
         $progressionImplode = implode("  ", $progression); //сбор прогрессии в строку
-        $correctAnswer = $stepProgression + $stepProgression * $index;
-        $result[] = [$progressionImplode, $correctAnswer];
+        $correctAnswer = $startValueProgression + $stepProgression * $index;
+        $results[] = [$progressionImplode, $correctAnswer];
     }
-    return $result;
+    return $results;
 }
 
 function runGames()
 {
     $gameGreeting = 'What number is missing in the progression?';
-    $result = randProgression();
-    play($gameGreeting, $result, ROUND_COUNT);
+    $results = randProgression();
+    play($gameGreeting, $results, ROUNDS_COUNT);
 }

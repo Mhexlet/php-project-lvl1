@@ -7,7 +7,7 @@ namespace BrainGames\Engine;
 use function cli\line;
 use function cli\prompt;
 
-const ROUND_COUNT = 3;  //количество раундов игры
+const ROUNDS_COUNT = 3;  //количество раундов игры
 
 function askNameUser()
 {
@@ -15,21 +15,7 @@ function askNameUser()
     return $name;
 }
 
-function getAndCompareAnswer(array $resultRound, $name) //функция получения ответа пользователя и сравнение с правильным
-{
-    [$questionNumber, $correctAnswer] = $resultRound; //извлечение из массива вопроса пользователю и правильного ответа
-    line("Question: {$questionNumber}");
-    $answer = prompt('Your answer');
-    if ($answer == $correctAnswer) {
-        line('Correct!');
-    } else {
-        line("'{$answer}' is wrong answer ;(. Correct answer was '{$correctAnswer}'.");
-        line("Let's try again, %s!", $name);
-        exit;
-    }
-}
-
-function play($gameGreeting, $result, $ROUND_COUNT) //собственно игра
+function play($gameGreeting, $results, $ROUNDS_COUNT) //собственно игра
 {
     //Начало приветствия пользователя
     line('Welcome to the Brain Games!');
@@ -38,10 +24,17 @@ function play($gameGreeting, $result, $ROUND_COUNT) //собственно иг�
     $name = askNameUser();
     line("Hello, %s!", $name);
     //Конец приветствия
-    for ($i = 0; $i < $ROUND_COUNT; $i++) {
-        $countArray = count($result);
-        $resultRound = $result[$i];
-        getAndCompareAnswer($resultRound, $name);
+    foreach ($results as $result) {
+        [$questionNumber, $correctAnswer] = $result; //извлечение из массива вопроса пользователю и правильного ответа
+        line("Question: {$questionNumber}");
+        $answer = prompt('Your answer');
+        if ($answer == $correctAnswer) {
+            line('Correct!');
+        } else {
+            line("'{$answer}' is wrong answer ;(. Correct answer was '{$correctAnswer}'.");
+            line("Let's try again, %s!", $name);
+            exit;
+        }
     }
     line("Congratulations, %s!", $name);
 }

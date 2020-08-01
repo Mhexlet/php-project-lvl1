@@ -6,21 +6,21 @@ use function cli\line;
 use function cli\prompt;
 use function BrainGames\Engine\play;
 
-use const BrainGames\Engine\ROUND_COUNT;
+use const BrainGames\Engine\ROUNDS_COUNT;
 
-function valueGenerate() //генерация данных и определение правильного ответа
+function generateRoundData() //генерация данных и определение правильного ответа
 {
-    for ($i = 0; $i < ROUND_COUNT; $i++) {
+    for ($i = 0; $i < ROUNDS_COUNT; $i++) {
         $gameAnswer = rand(1, 15);
         ($gameAnswer % 2 === 0) ? $correctAnswer = 'yes' : $correctAnswer = 'no';
-        $result[] = [$gameAnswer, $correctAnswer];
+        $results[] = [$gameAnswer, $correctAnswer];
     }
-    return $result;
+    return $results;
 }
 
 function runGames()
 {
     $gameGreeting = 'Answer "yes" if the number is even, otherwise answer "no"';
-    $result = valueGenerate();
-    play($gameGreeting, $result, ROUND_COUNT);
+    $results = generateRoundData();
+    play($gameGreeting, $results, ROUNDS_COUNT);
 }

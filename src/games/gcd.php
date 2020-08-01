@@ -6,39 +6,39 @@ use function cli\line;
 use function cli\prompt;
 use function BrainGames\Engine\play;
 
-use const BrainGames\Engine\ROUND_COUNT;
+use const BrainGames\Engine\ROUNDS_COUNT;
 
 function findGcd($numberOne, $numberTwo)  //нахождение наибольшего общего делителя
 {
     $minNumber = min($numberOne, $numberTwo);
     $minNumberHalf = round($minNumber / 2, 0, PHP_ROUND_HALF_UP); //определяем половину минимального числа
     $maxNumber = max($numberOne, $numberTwo);
-    $result = 1;
+    $results = 1;
     for ($i = 2; $i <= $minNumberHalf; $i++) {
         if ($maxNumber % $minNumber == 0) {
-            $result = $minNumber;
+            $results = $minNumber;
         } elseif ($numberOne % $i == 0 && $numberTwo % $i == 0) {
-            $result = $i;
+            $results = $i;
         }
     }
-    return $result;
+    return $results;
 }
 
 function gcdGenerator() //Функция по наибольшему общему делителю
 {
-    for ($i = 0; $i < ROUND_COUNT; $i++) {
+    for ($i = 0; $i < ROUNDS_COUNT; $i++) {
         $numberOne = rand(1, 30);
         $numberTwo = rand(1, 30);
         $question = "{$numberOne} {$numberTwo}";
         $correctAnswer = findGcd($numberOne, $numberTwo);
-        $result[] = [$question, $correctAnswer];
+        $results[] = [$question, $correctAnswer];
     }
-    return $result;
+    return $results;
 }
 
 function runGames()
 {
     $gameGreeting = 'Find the greatest common divisor of given numbers.';
-    $result = gcdGenerator();
-    play($gameGreeting, $result, ROUND_COUNT);
+    $results = gcdGenerator();
+    play($gameGreeting, $results, ROUNDS_COUNT);
 }

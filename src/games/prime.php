@@ -6,9 +6,9 @@ use function cli\line;
 use function cli\prompt;
 use function BrainGames\Engine\play;
 
-use const BrainGames\Engine\ROUND_COUNT;
+use const BrainGames\Engine\ROUNDS_COUNT;
 
-function primeCheck($number) //Проверка числа на простоту
+function checkPrime($number) //Проверка числа на простоту
 {
     if ($number <= 1) {
         return false;
@@ -21,19 +21,19 @@ function primeCheck($number) //Проверка числа на простоту
     return true;
 }
 
-function numberGeneratorAndPrimeCheck() //генерация числа и проверка на простоту
+function gameAnswerGeneratorAndPrimeCheck() //генерация вопроса игры и проверка на простоту
 {
-    for ($i = 0; $i < ROUND_COUNT; $i++) {
-        $number = rand(2, 1000);
-        primeCheck($number) ? $correctAnswer = 'yes' : $correctAnswer = 'no';
-        $result[] = [$number, $correctAnswer];
+    for ($i = 0; $i < ROUNDS_COUNT; $i++) {
+        $gameAnswer = rand(2, 1000);
+        checkPrime($gameAnswer) ? $correctAnswer = 'yes' : $correctAnswer = 'no';
+        $results[] = [$gameAnswer, $correctAnswer];
     }
-    return $result;
+    return $results;
 }
 
 function runGames()
 {
     $gameGreeting = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-    $result = numberGeneratorAndPrimeCheck();
-    play($gameGreeting, $result, ROUND_COUNT);
+    $results = gameAnswerGeneratorAndPrimeCheck();
+    play($gameGreeting, $results, ROUNDS_COUNT);
 }
