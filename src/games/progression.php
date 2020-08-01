@@ -26,8 +26,8 @@ function randProgression() //Рандомный выбор значения и �
         $progressionSize = 10; //размер прогрессии
         $stepProgression = rand(2, 5); //шаг прогрессии (от 2 до 5)
         $startValueProgression = 0; //начальное значение прогрессии
-        //
-        $progression = getProgression($progressionSize, $stepProgression, $startValueProgression); //запись прогрессии в переменную
+        //запись прогрессии в переменную
+        $progression = getProgression($progressionSize, $stepProgression, $startValueProgression);
         $index = rand(0, (count($progression) - 1)); //рандомный выбор индекса для скрытия
         $progression[$index] = '..';
         $progressionImplode = implode("  ", $progression); //сбор прогрессии в строку

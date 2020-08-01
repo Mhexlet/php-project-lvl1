@@ -30,7 +30,8 @@ function checkRightAnswer()
         $mathematicalOperationsCount = count($mathematicalOperations);
         $math = rand(0, ($mathematicalOperationsCount - 1));//рандомный выбор оператора
         $correctAnswer = calculate($numberOne, $numberTwo, $mathematicalOperations[$math]);
-        $question = "{$numberOne} {$mathematicalOperations[$math]} {$numberTwo}"; //генерация строки выражения для пользователя
+        //генерация строки выражения для пользователя
+        $question = "{$numberOne} {$mathematicalOperations[$math]} {$numberTwo}";
         $results[] = [$question, $correctAnswer];
     }
     return $results;
