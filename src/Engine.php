@@ -25,7 +25,8 @@ function play($gameGreeting, $resultsGame) //собственно игра
     line("Hello, %s!", $name);
     //Конец приветствия
     foreach ($resultsGame as $resultGame) {
-        [$questionNumber, $correctAnswer] = $resultGame; //извлечение из массива вопроса пользователю и правильного ответа
+        //извлечение из массива вопроса пользователю и правильного ответа
+        [$questionNumber, $correctAnswer] = $resultGame;
         line("Question: {$questionNumber}");
         $answer = prompt('Your answer');
         if ($answer == $correctAnswer) {
