@@ -22,5 +22,5 @@ function runGames()
 {
     $gameGreeting = 'Answer "yes" if the number is even, otherwise answer "no"';
     $results = generateRoundData();
-    play($gameGreeting, $results, ROUNDS_COUNT);
+    play($gameGreeting, $results);
 }

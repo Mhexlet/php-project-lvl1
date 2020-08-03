@@ -35,5 +35,5 @@ function runGames()
 {
     $gameGreeting = 'Answer "yes" if given number is prime. Otherwise answer "no".';
     $results = gameAnswerGeneratorAndPrimeCheck();
-    play($gameGreeting, $results, ROUNDS_COUNT);
+    play($gameGreeting, $results);
 }

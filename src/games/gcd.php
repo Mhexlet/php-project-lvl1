@@ -40,5 +40,5 @@ function runGames()
 {
     $gameGreeting = 'Find the greatest common divisor of given numbers.';
     $results = gcdGenerator();
-    play($gameGreeting, $results, ROUNDS_COUNT);
+    play($gameGreeting, $results);
 }

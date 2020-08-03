@@ -28,7 +28,7 @@ function randProgression() //Рандомный выбор значения и �
         $startValueProgression = 0; //начальное значение прогрессии
         //запись прогрессии в переменную
         $progression = getProgression($progressionSize, $stepProgression, $startValueProgression);
-        $index = rand(0, (count($progression) - 1)); //рандомный выбор индекса для скрытия
+        $index = rand(0, ($progressionSize - 1)); //рандомный выбор индекса для скрытия
         $progression[$index] = '..';
         $progressionImplode = implode("  ", $progression); //сбор прогрессии в строку
         $correctAnswer = $startValueProgression + $stepProgression * $index;
@@ -41,5 +41,5 @@ function runGames()
 {
     $gameGreeting = 'What number is missing in the progression?';
     $results = randProgression();
-    play($gameGreeting, $results, ROUNDS_COUNT);
+    play($gameGreeting, $results);
 }

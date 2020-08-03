@@ -41,5 +41,5 @@ function runGames()
 {
     $termsEven = 'What is the result of the expression?';
     $results = checkRightAnswer();
-    play($termsEven, $results, ROUNDS_COUNT);
+    play($termsEven, $results);
 }

@@ -15,7 +15,7 @@ function askNameUser()
     return $name;
 }
 
-function play($gameGreeting, $results, $ROUNDS_COUNT) //собственно игра
+function play($gameGreeting, $resultsGame) //собственно игра
 {
     //Начало приветствия пользователя
     line('Welcome to the Brain Games!');
@@ -24,8 +24,8 @@ function play($gameGreeting, $results, $ROUNDS_COUNT) //собственно и�
     $name = askNameUser();
     line("Hello, %s!", $name);
     //Конец приветствия
-    foreach ($results as $result) {
-        [$questionNumber, $correctAnswer] = $result; //извлечение из массива вопроса пользователю и правильного ответа
+    foreach ($resultsGame as $resultGame) {
+        [$questionNumber, $correctAnswer] = $resultGame; //извлечение из массива вопроса пользователю и правильного ответа
         line("Question: {$questionNumber}");
         $answer = prompt('Your answer');
         if ($answer == $correctAnswer) {
