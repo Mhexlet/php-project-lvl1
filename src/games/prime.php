@@ -31,9 +31,9 @@ function gameAnswerGeneratorAndPrimeCheck() //генерация вопроса 
     return $results;
 }
 
-function runGames()
+function runGame()
 {
     $gameGreeting = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-    $results = gameAnswerGeneratorAndPrimeCheck();
-    play($gameGreeting, $results);
+    $gameData = gameAnswerGeneratorAndPrimeCheck();
+    play($gameGreeting, $gameData);
 }

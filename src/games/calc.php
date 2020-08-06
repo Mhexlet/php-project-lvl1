@@ -37,9 +37,9 @@ function checkRightAnswer()
     return $results;
 }
 
-function runGames()
+function runGame()
 {
     $termsEven = 'What is the result of the expression?';
-    $results = checkRightAnswer();
-    play($termsEven, $results);
+    $gameData = checkRightAnswer();
+    play($termsEven, $gameData);
 }

@@ -18,9 +18,9 @@ function generateRoundData() //генерация данных и определ
     return $results;
 }
 
-function runGames()
+function runGame()
 {
     $gameGreeting = 'Answer "yes" if the number is even, otherwise answer "no"';
-    $results = generateRoundData();
-    play($gameGreeting, $results);
+    $gameData = generateRoundData();
+    play($gameGreeting, $gameData);
 }

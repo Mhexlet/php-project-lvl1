@@ -9,24 +9,24 @@ use function cli\prompt;
 
 const ROUNDS_COUNT = 3;  //количество раундов игры
 
-function askNameUser()
+function askUserName()
 {
     $name = prompt('May I have your name?');
     return $name;
 }
 
-function play($gameGreeting, $resultsGame) //собственно игра
+function play($gameGreeting, $gameData) //собственно игра
 {
     //Начало приветствия пользователя
     line('Welcome to the Brain Games!');
     line("{$gameGreeting}");
     line('');
-    $name = askNameUser();
+    $name = askUserName();
     line("Hello, %s!", $name);
     //Конец приветствия
-    foreach ($resultsGame as $resultGame) {
+    foreach ($gameData as $data) {
         //извлечение из массива вопроса пользователю и правильного ответа
-        [$questionNumber, $correctAnswer] = $resultGame;
+        [$questionNumber, $correctAnswer] = $data;
         line("Question: {$questionNumber}");
         $answer = prompt('Your answer');
         if ($answer == $correctAnswer) {
@@ -34,7 +34,7 @@ function play($gameGreeting, $resultsGame) //собственно игра
         } else {
             line("'{$answer}' is wrong answer ;(. Correct answer was '{$correctAnswer}'.");
             line("Let's try again, %s!", $name);
-            exit;
+            exit(0);
         }
     }
     line("Congratulations, %s!", $name);

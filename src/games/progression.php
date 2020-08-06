@@ -12,20 +12,20 @@ function getProgression($progressionSize, $stepProgression, $startValueProgressi
 {
     $progression = array(); //объявление переменной с прогрессией
     $i = 0;
-    while ($i < ($progressionSize - 1)) {
+    while ($i < $progressionSize) {
         $progression[$i] = $startValueProgression + $stepProgression * $i;
         $i++;
     }
     return $progression;
 }
 
-function randProgression() //Рандомный выбор значения и передача правильного ответа
+function generateProgressionAndUserQuestion() //Формирует прогрессию по заданным параметрам и вопрос пользователю
 {
     for ($i = 0; $i < ROUNDS_COUNT; $i++) {
         //Задаем параметры прогрессии
         $progressionSize = 10; //размер прогрессии
         $stepProgression = rand(2, 5); //шаг прогрессии (от 2 до 5)
-        $startValueProgression = 0; //начальное значение прогрессии
+        $startValueProgression = rand(2, 5); //начальное значение прогрессии
         //запись прогрессии в переменную
         $progression = getProgression($progressionSize, $stepProgression, $startValueProgression);
         $index = rand(0, ($progressionSize - 1)); //рандомный выбор индекса для скрытия
@@ -37,9 +37,9 @@ function randProgression() //Рандомный выбор значения и �
     return $results;
 }
 
-function runGames()
+function runGame()
 {
     $gameGreeting = 'What number is missing in the progression?';
-    $results = randProgression();
-    play($gameGreeting, $results);
+    $gameData = generateProgressionAndUserQuestion();
+    play($gameGreeting, $gameData);
 }

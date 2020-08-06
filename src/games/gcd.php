@@ -13,15 +13,13 @@ function findGcd($numberOne, $numberTwo)  //нахождение наиболь�
     $minNumber = min($numberOne, $numberTwo);
     $minNumberHalf = round($minNumber / 2, 0, PHP_ROUND_HALF_UP); //определяем половину минимального числа
     $maxNumber = max($numberOne, $numberTwo);
-    $results = 1;
-    for ($i = 2; $i <= $minNumberHalf; $i++) {
+    for ($i = $minNumberHalf; $i > 0; $i--) {
         if ($maxNumber % $minNumber == 0) {
-            $results = $minNumber;
+            return $minNumber;
         } elseif ($numberOne % $i == 0 && $numberTwo % $i == 0) {
-            $results = $i;
+            return $i;
         }
     }
-    return $results;
 }
 
 function gcdGenerator() //Функция по наибольшему общему делителю
@@ -36,9 +34,9 @@ function gcdGenerator() //Функция по наибольшему общем�
     return $results;
 }
 
-function runGames()
+function runGame()
 {
     $gameGreeting = 'Find the greatest common divisor of given numbers.';
-    $results = gcdGenerator();
-    play($gameGreeting, $results);
+    $gameData = gcdGenerator();
+    play($gameGreeting, $gameData);
 }
