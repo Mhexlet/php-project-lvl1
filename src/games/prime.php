@@ -1,6 +1,6 @@
 <?php
 
-namespace BrainGames\BrainPrime;
+namespace BrainGames\prime;
 
 use function cli\line;
 use function cli\prompt;
@@ -21,12 +21,12 @@ function checkPrime($number) //Проверка числа на простоту
     return true;
 }
 
-function gameAnswerGeneratorAndPrimeCheck() //генерация вопроса игры и проверка на простоту
+function gameQuestionGeneratorAndPrimeCheck() //генерация вопроса игры и проверка на простоту
 {
     for ($i = 0; $i < ROUNDS_COUNT; $i++) {
-        $gameAnswer = rand(2, 1000);
-        checkPrime($gameAnswer) ? $correctAnswer = 'yes' : $correctAnswer = 'no';
-        $results[] = [$gameAnswer, $correctAnswer];
+        $gameQuestion = rand(2, 1000);
+        checkPrime($gameQuestion) ? $correctAnswer = 'yes' : $correctAnswer = 'no';
+        $results[] = [$gameQuestion, $correctAnswer];
     }
     return $results;
 }
@@ -34,6 +34,6 @@ function gameAnswerGeneratorAndPrimeCheck() //генерация вопроса 
 function runGame()
 {
     $gameGreeting = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-    $gameData = gameAnswerGeneratorAndPrimeCheck();
+    $gameData = gameQuestionGeneratorAndPrimeCheck();
     play($gameGreeting, $gameData);
 }

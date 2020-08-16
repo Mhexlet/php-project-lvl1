@@ -24,9 +24,7 @@ function play($gameGreeting, $gameData) //собственно игра
     $name = askUserName();
     line("Hello, %s!", $name);
     //Конец приветствия
-    foreach ($gameData as $data) {
-        //извлечение из массива вопроса пользователю и правильного ответа
-        [$questionNumber, $correctAnswer] = $data;
+    foreach ($gameData as list($questionNumber, $correctAnswer)) {
         line("Question: {$questionNumber}");
         $answer = prompt('Your answer');
         if ($answer == $correctAnswer) {
@@ -34,7 +32,7 @@ function play($gameGreeting, $gameData) //собственно игра
         } else {
             line("'{$answer}' is wrong answer ;(. Correct answer was '{$correctAnswer}'.");
             line("Let's try again, %s!", $name);
-            exit(0);
+            return 0;
         }
     }
     line("Congratulations, %s!", $name);

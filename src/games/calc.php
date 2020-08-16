@@ -1,6 +1,6 @@
 <?php
 
-namespace BrainGames\BrainCalc;
+namespace BrainGames\calc;
 
 use function cli\line;
 use function cli\prompt;
@@ -8,9 +8,9 @@ use function BrainGames\Engine\play;
 
 use const BrainGames\Engine\ROUNDS_COUNT;
 
-function calculate($numberOne, $numberTwo, $mathematicalOperations) //функция калькулятор
+function calculate($numberOne, $numberTwo, $mathematicalOperator) //функция калькулятор
 {
-    switch ($mathematicalOperations) {
+    switch ($mathematicalOperator) {
         case '+':
             return $numberOne + $numberTwo;
         case '-':
@@ -27,11 +27,12 @@ function checkRightAnswer()
         $numberOne = rand(1, 5);
         $numberTwo = rand(1, 5);
         $mathematicalOperations = array('+', '-', '*');
-        $mathematicalOperationsCount = count($mathematicalOperations);
-        $math = rand(0, ($mathematicalOperationsCount - 1));//рандомный выбор оператора
-        $correctAnswer = calculate($numberOne, $numberTwo, $mathematicalOperations[$math]);
+        $randKeysMathematicalOperations = array_rand($mathematicalOperations, 1);
+        //рандомный выбор оператора
+        $mathematicalOperator = $mathematicalOperations[$randKeysMathematicalOperations];
+        $correctAnswer = calculate($numberOne, $numberTwo, $mathematicalOperator);
         //генерация строки выражения для пользователя
-        $question = "{$numberOne} {$mathematicalOperations[$math]} {$numberTwo}";
+        $question = "{$numberOne} {$mathematicalOperator} {$numberTwo}";
         $results[] = [$question, $correctAnswer];
     }
     return $results;
